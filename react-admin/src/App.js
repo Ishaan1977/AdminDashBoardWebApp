@@ -1,3 +1,8 @@
+import { ColorModeContext, useMode } from "./theme";      // theme.js edited 
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import Topbar from "./scenes/global/Topbar";
+
+
 
 function App() {
   return (
