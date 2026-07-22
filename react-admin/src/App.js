@@ -28,7 +28,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         {/* Added display: flex here to force Sidebar and Main Content to be side-by-side */}
-        <div className="app" style={{ display: "flex", flexDirection: "row", width: "100vw", minHeight: "100vh" }}>
+        <div className="app" style={{ display: "flex", flexDirection: "row", width: "100%", minHeight: "100vh" }}>
           <Sidebar isSidebar={isSidebar} />
           {/* Added flex-grow so the main content fills the rest of the screen width */}
           <main className="content" style={{ flex: 1, display: "flex", flexDirection: "column", overflowX: "hidden" }}>

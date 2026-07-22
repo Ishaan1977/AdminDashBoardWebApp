@@ -1,5 +1,4 @@
 import { useState } from "react";
-// 1. Notice the alias: "Sidebar as ProSidebar"
 import { Sidebar as ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -45,7 +44,11 @@ const Sidebar = () => {
   return (
     <Box
       sx={{
-        // Modern v1.x CSS target class names
+        display: "flex",
+        height: "100%",
+        "& .ps-sidebar-root": {
+          border: "none !important",
+        },
         "& .ps-sidebar-container": {
           background: `${colors.primary[400]} !important`,
         },
@@ -64,7 +67,6 @@ const Sidebar = () => {
         },
       }}
     >
-      {/* 2. Changed from <Sidebar> to your alias <ProSidebar> */}
       <ProSidebar collapsed={isCollapsed}>
         <Menu iconShape="square">
           {/* LOGO AND MENU ICON */}
@@ -114,7 +116,7 @@ const Sidebar = () => {
                   Ishaan Raj
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                  Database Admin
+                  VP Fancy Admin
                 </Typography>
               </Box>
             </Box>
