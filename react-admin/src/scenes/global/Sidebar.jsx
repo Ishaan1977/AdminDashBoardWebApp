@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Sidebar as ProSideBar, Menu, MenuItem } from "react-pro-sidebar";
+// 1. Notice the alias: "Sidebar as ProSidebar"
+import { Sidebar as ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import { tokens } from "../../theme";
@@ -16,6 +17,7 @@ import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 
+// Modern component routing implementation
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -27,9 +29,9 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
       }}
       onClick={() => setSelected(title)}
       icon={icon}
+      component={<Link to={to} />}
     >
       <Typography>{title}</Typography>
-      <Link to={to} />
     </MenuItem>
   );
 };
@@ -43,24 +45,27 @@ const Sidebar = () => {
   return (
     <Box
       sx={{
-        "& .pro-sidebar-inner": {
+        // Modern v1.x CSS target class names
+        "& .ps-sidebar-container": {
           background: `${colors.primary[400]} !important`,
         },
-        "& .pro-icon-wrapper": {
+        "& .ps-icon-wrapper": {
           backgroundColor: "transparent !important",
         },
-        "& .pro-inner-item": {
+        "& .ps-menu-button": {
           padding: "5px 35px 5px 20px !important",
         },
-        "& .pro-inner-item:hover": {
+        "& .ps-menu-button:hover": {
           color: "#868dfb !important",
+          backgroundColor: "transparent !important",
         },
-        "& .pro-menu-item.active": {
+        "& .ps-menu-item.active": {
           color: "#6870fa !important",
         },
       }}
     >
-      <ProSideBar collapsed={isCollapsed}>
+      {/* 2. Changed from <Sidebar> to your alias <ProSidebar> */}
+      <ProSidebar collapsed={isCollapsed}>
         <Menu iconShape="square">
           {/* LOGO AND MENU ICON */}
           <MenuItem
@@ -219,7 +224,7 @@ const Sidebar = () => {
             />
           </Box>
         </Menu>
-      </ProSideBar>
+      </ProSidebar>
     </Box>
   );
 };
